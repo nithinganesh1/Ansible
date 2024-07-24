@@ -1,0 +1,15 @@
+  - name: File Management
+    hosts: all
+    tasks:
+      - name: copy inventory.yaml to all hosts
+        copy:
+          src: inventory.yaml
+          dest: Nithin/
+      - name: copy another file for delete
+        copy:
+          src: ping.yml
+          dest: Nithin/
+      - name: delete a file from all hosts
+        file:
+          path: Nithin/ping.yml
+          state: absent

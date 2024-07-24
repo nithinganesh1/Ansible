@@ -1,0 +1,5 @@
+  - name: installation of httpd,enabling and starting
+    hosts: all
+    tasks:
+      - name: installation
+        shell: echo "helllo its me" >> hello

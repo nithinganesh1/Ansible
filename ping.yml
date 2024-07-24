@@ -1,0 +1,5 @@
+  - name: Checking Connection of all Targerts
+    hosts: all
+    tasks:
+      - name: ping
+        ping: 

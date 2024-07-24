@@ -1,0 +1,7 @@
+  - name: User Management
+    hosts: me
+    tasks:
+      - name: Deleting user devops
+        user:
+          name: devops
+          state: absent

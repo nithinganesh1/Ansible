@@ -1,0 +1,8 @@
+  - name: stop and disable services
+    hosts: me
+    tasks:
+      - name: disable httpd
+        service:
+          name: httpd
+          state: stopped
+          enabled: no

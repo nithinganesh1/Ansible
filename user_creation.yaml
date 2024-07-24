@@ -1,0 +1,9 @@
+  - name: User Management
+    hosts: me
+    tasks:
+      - name: create user named devops
+        user:
+          name: devops
+          shell: /bin/bash
+          comment: "Hello User"
+          groups: 10

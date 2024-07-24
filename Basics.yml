@@ -1,0 +1,9 @@
+  - name: Some Basic Tasks
+    hosts: me
+    tasks:
+      - name: Direcotory and file Creation
+        shell: |
+          mkdir DevOps
+          touch DevOps/Welcome_mate  
+      - name: Changing File Permission
+        command: chmod 644 DevOps/Welcome_mate

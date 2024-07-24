@@ -1,0 +1,12 @@
+- name: installation,enable,start of a service
+  hosts: me
+  tasks:
+    - name: install httpd and nginx
+      yum:
+        name: httpd,nginx
+        state: present
+    - name: enbling httpd
+      service:
+        name: httpd
+        enabled: yes
+        state: started
