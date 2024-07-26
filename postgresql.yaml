@@ -1,0 +1,15 @@
+---
+  - name: install psql
+    hosts: me
+    tasks:
+      - name:
+        yum:
+          name: postgresql-server
+          state: present
+      - shell: postgresql-setup --initdb
+      - name:
+        service:
+          name: postgresql
+          state: started
+          enabled: yes
+...

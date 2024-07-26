@@ -1,0 +1,12 @@
+  - name: install,start and enable mysql
+    hosts: me
+    tasks:
+      - name: install mysql
+        dnf:
+          name: mysqld
+          state: present
+      - name: enable and start
+        service:
+          name: mysqld 
+          enabled: yes
+          state: started

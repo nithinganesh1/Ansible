@@ -1,0 +1,14 @@
+---
+  - name: mariadb setup
+    hosts: me
+    tasks:
+      - name: installation
+        dnf:
+          name: mariadb-server
+          state: present
+      - name: starting and enabling
+        service:
+          name: mariadb
+          enabled: yes
+          state: started
+...

@@ -1,0 +1,12 @@
+---
+- name: Install nginx, docker, and git
+  hosts: me
+  tasks:
+    - name: Install nginx, curl, and git
+      dnf:
+        name:
+          - nginx-1.20.1
+          - docker
+          - git
+        state: present
+

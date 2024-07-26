@@ -1,0 +1,12 @@
+---
+  - name: execute bash script
+    hosts: me
+    tasks:
+      - name: copy script to targets
+        copy:
+          src: ../cpuusage.sh
+          dest: ./cpuusage.sh
+          mode: 777
+      - name: run script
+        script: /home/ng/cpuusage.sh
+...

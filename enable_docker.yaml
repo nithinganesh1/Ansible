@@ -1,0 +1,8 @@
+  - name: enable docker
+    hosts: me
+    tasks:
+      - name: enable docker
+        service:
+          name: podman
+          enabled: yes
+          state: started

@@ -1,0 +1,9 @@
+---
+  - name: dir_creation_/tmp/testdir
+    hosts: me
+    tasks:
+      - name: creation
+        file:
+          path: /tmp/testdir
+          state: directory
+...
