@@ -11,4 +11,25 @@
           name: mariadb
           enabled: yes
           state: started
+      - name: install PyMySQL
+        dnf:
+          name: python3-PyMySQL
+          state: present
+      - name: database creation
+        mysql_db:
+          name: mydb
+          state: present
+          login_unix_socket: /var/lib/mysql/mysql.sock
+      - name: database creation using community module
+        community.mysql.mysql_db:
+          name: community_db
+          state: present
+          login_unix_socket: /var/lib/mysql/mysql.sock
+      - name: database user creation
+        community.mysql.mysql_user:
+          name: Nithin
+          state: present
+          password: asd123..
+          priv: '*.*:ALL,GRANT'
+          login_unix_socket: /var/lib/mysql/mysql.sock
 ...

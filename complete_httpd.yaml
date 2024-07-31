@@ -1,0 +1,35 @@
+---
+  - name: httpd installation,enable,start,stop,disable,remove
+    hosts: me
+    tasks:
+      - name: installation
+        dnf:
+          name: httpd
+          state: present
+        tags:
+          - in
+          - all
+      - name: enable and start
+        service:
+          name: httpd
+          state: started
+          enabled: yes
+        tags:
+          - in
+          - all
+      - name: stop and disabled
+        service:
+          name: httpd
+          state: stopped
+          enabled: no
+        tags:
+          - out
+          - all
+      - name: remove
+        dnf:
+          name: httpd
+          state: absent
+        tags:
+          - out
+          - all
+...
