@@ -1,0 +1,27 @@
+---
+  - name: webhosting
+    hosts: all
+    tasks:
+      - name: install httpd
+        dnf:
+          name: httpd
+          state: present
+      - name: start and enable
+        service:
+          name: httpd
+          state: started
+          enabled: yes
+      - name: adding portnum to firewalld
+        firewalld:
+          port: 80/tcp
+          state: enabled
+          permanent: true
+      - name: copy html flile host to target
+        copy:
+          src: /home/zoro/Ansible/basic.html
+          dest: /var/www/html/index.html
+      - name: restart httpd
+        service:
+          name: httpd
+          state: restarted
+...
