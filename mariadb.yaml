@@ -20,11 +20,13 @@
           name: mydb
           state: present
           login_unix_socket: /var/lib/mysql/mysql.sock
+        register: db
       - name: database creation using community module
         community.mysql.mysql_db:
           name: community_db
           state: present
           login_unix_socket: /var/lib/mysql/mysql.sock
+        register: cdb
       - name: database user creation
         community.mysql.mysql_user:
           name: Nithin
@@ -32,4 +34,17 @@
           password: asd123..
           priv: '*.*:ALL,GRANT'
           login_unix_socket: /var/lib/mysql/mysql.sock
+        register: user
+      - name: live process db
+        debug:
+          var:
+            db
+      - name: live process cdb
+        debug:
+          var:
+            cdb
+      - name: live process user
+        debug:
+          var:
+            user
 ...

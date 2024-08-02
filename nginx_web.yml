@@ -1,14 +1,14 @@
 ---
-  - name: webhosting
-    hosts: nithin
+  - name: web hosting using nginx
+    hosts: nithin2
     tasks:
-      - name: install httpd
+      - name: install nginx
         dnf:
-          name: httpd
+          name: nginx
           state: present
-      - name: start and enable
+      - name: enable and start
         service:
-          name: httpd
+          name: nginx
           state: started
           enabled: yes
       - name: adding portnum to firewalld
@@ -20,12 +20,12 @@
         service:
           name: firewalld
           state: restarted
-      - name: copy html flile host to target
+      - name: copy file to target
         copy:
           src: /home/ng/Ansible/basic.html
-          dest: /var/www/html/index.html
-      - name: restart httpd
+          dest: /usr/share/nginx/html/index.html
+      - name: restart nginx
         service:
-          name: httpd
+          name: nginx
           state: restarted
 ...

@@ -1,0 +1,12 @@
+---
+  - name: checking facts
+    hosts: nithin
+    tasks:
+      - name: collecting facts
+        setup:
+        register: reg
+      - name: print
+        debug:
+          var:
+            reg
+...

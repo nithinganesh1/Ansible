@@ -6,3 +6,8 @@
           name: podman
           enabled: yes
           state: started
+        register: reg
+      - name: live process
+        debug:
+          var:
+            reg

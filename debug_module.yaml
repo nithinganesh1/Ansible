@@ -1,0 +1,12 @@
+---
+  - name: debug module
+    hosts: me
+    tasks:
+      - name: debug
+        debug:
+          msg: |
+            - "ip addr = {{ansible_host}}"
+            - "hostname = {{ansible_hostname}}"
+            - "os = {{ansible_distribution}}"
+            - "architecture = {{ansible_architecture}}"
+            - "cores = {{ansible_processor_cores}}"

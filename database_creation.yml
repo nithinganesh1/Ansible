@@ -1,0 +1,46 @@
+---
+  - name: database creation
+    hosts: me
+    vars:
+      dbname: lab8
+      dbuser: nithin
+      dbpass: asd123..
+      sock: /var/lib/mysql/mysql.sock
+    tasks:
+      - name: installation
+        dnf:
+          name: mariadb-server
+          state: present
+      - name: start and enable
+        service:
+          name: mariadb
+          state: started
+          enabled: yes
+      - name: installation of PyMySQL
+        dnf:
+          name: python3-PyMySQL
+          state: present
+      - name: database creation
+        mysql_db:
+          name: "{{dbname}}"
+          state: present
+          login_unix_socket: "{{sock}}"
+        register: reg
+      - name: user creation
+        mysql_user:
+          name: "{{dbuser}}"
+          state: present
+          password: "{{dbpass}}"
+          host: "%"
+          priv: "*.*:ALL"
+          login_unix_socket: "{{sock}}"
+      - name: var
+        debug:
+          var:
+            reg
+      - name: Debug
+        debug:
+          msg: |
+            "user: {{dbuser}}"
+            "name: {{dbname}}"
+...
