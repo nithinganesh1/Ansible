@@ -1,0 +1,59 @@
+all:
+  hosts:
+    nithin:
+      ansible_user: ng
+      ansible_host: 172.16.70.19
+      ansible_become: yes
+      ansible_become_method: sudo
+      ansible_become_pass: ******.
+    nithin2:
+      ansible_user: ng
+      ansible_host: 172.16.70.20
+      ansible_become: yes
+      ansible_become_method: sudo
+      ansible_become_pass: ******.
+    najil1:
+      ansible_user: njl
+      ansible_host: 172.16.70.16
+      ansible_become: yes
+      ansible_become_method: sudo
+      ansible_become_pass: ******.
+    najil2:
+      ansible_user: njl
+      ansible_host: 172.16.70.17
+      ansible_become: yes
+      ansible_become_method: sudo
+      ansible_become_pass: ******.
+    bavin1:
+      ansible_user: bavin
+      ansible_host: 172.16.70.25
+      ansible_become: yes
+      ansible_become_method: sudo
+      ansible_become_pass: ******.
+    bavin2:
+      ansible_user: bavin
+      ansible_host: 172.16.70.26
+      ansible_become: yes
+      ansible_become_method: sudo
+      ansible_become_pass: ******.
+  children:
+    me:
+      hosts:
+        nithin:
+        nithin2:
+    njl:
+      hosts:
+        najil1:
+        najil2:
+    bav:
+      hosts:
+        bavin1:
+        bavin2:
+    room:
+      children:
+        me:
+        njl:
+    syn:
+      children:
+        bav:
+        njl:

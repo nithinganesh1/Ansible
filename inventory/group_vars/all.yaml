@@ -1,0 +1,4 @@
+---
+src: /home/ng/Ansible/basic.html
+dest: /var/www/html/index.html
+...

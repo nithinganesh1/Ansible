@@ -1,0 +1,11 @@
+---
+  - name: User Management
+    hosts: me
+    tasks:
+      - name: create user mentioned in host_vars
+        user:
+          name: "{{usr}}"
+          shell: "{{bash}}"
+          comment: "{{cmt}}"
+          groups: 10
+...

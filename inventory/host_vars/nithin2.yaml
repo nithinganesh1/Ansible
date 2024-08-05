@@ -1,0 +1,6 @@
+---
+usr: player2
+cmt: "whelcome player2"
+bash: /bin/bash
+zh: /bin/zsh
+...

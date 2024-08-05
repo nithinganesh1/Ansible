@@ -22,8 +22,8 @@
           state: restarted
       - name: copy html flile host to target
         copy:
-          src: /home/ng/Ansible/basic.html
-          dest: /var/www/html/index.html
+          src: "{{src}}"
+          dest: "{{dest}}"
       - name: restart httpd
         service:
           name: httpd
