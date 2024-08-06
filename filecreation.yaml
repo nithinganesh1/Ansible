@@ -1,0 +1,11 @@
+---
+  - name: file creation
+    hosts: me
+    vars:
+      app_version: 1.0
+    tasks:
+      - name: create file named app_version.txt
+        copy:
+          dest: /home/ng/Nithin/app_version.txt
+          content: "{{ app_version }}"
+...

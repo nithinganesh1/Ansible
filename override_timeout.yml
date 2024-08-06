@@ -1,0 +1,10 @@
+---
+- name: Test variable precedence
+  hosts: all
+  vars:
+    timeout: 90
+  tasks:
+    - name: Print timeout variable
+      ansible.builtin.debug:
+        msg: "The timeout value is {{ timeout }}"
+...

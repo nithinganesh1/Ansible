@@ -1,0 +1,10 @@
+---
+  - name: command line var and playbook vars priority
+    hosts: me
+    vars:
+      deploy_path: /var/www/html
+    tasks:
+      - name: print var
+        debug:
+          var: deploy_path
+...

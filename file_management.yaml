@@ -5,6 +5,7 @@
         copy:
           src: inventory.yaml
           dest: Nithin/
+          backup: true
       - name: copy another file for delete
         copy:
           src: ping.yml

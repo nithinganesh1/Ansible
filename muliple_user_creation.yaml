@@ -1,0 +1,26 @@
+---
+  - name: user creation using vars and loops
+    hosts: me
+    vars:
+      unames:
+        - name: nithin
+          shell: /bin/bash
+          comment: "welcome nithin"
+        - name: najil
+          shell: /bin/bash
+          comment: "welcom najil"
+        - name: akshay
+          shell: /bin/bash
+          comment: "welcome akshay"
+        - name: bavin
+          shell: /bin/bash
+          comment: "welcome bavin"
+    tasks:
+      - name: creating users
+        user:
+          name: "{{item.name}}"
+          comment: "{{item.comment}}"
+          shell: "{{item.shell}}"
+          state: absent
+        loop: "{{ unames }}"
+...

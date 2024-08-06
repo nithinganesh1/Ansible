@@ -3,4 +3,5 @@ usr: "player1"
 cmt: "welcome player1"
 bash: /bin/bash
 zh: /bin/zsh
+timeout: 30
 ...
