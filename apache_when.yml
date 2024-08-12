@@ -1,0 +1,36 @@
+---
+  - name: install apache in different distros
+    hosts: me
+    tasks:
+      - name: install apache in alma
+        dnf:
+          name: httpd
+          state: present
+        when: 
+          - ansible_distribution == "AlmaLinux"
+          - ansible_distribution_version == "9.0"
+
+      - name: install apache in Ubuntu
+        apt:
+          name: apache2
+          state: present
+        when: 
+          - ansible_distribution == "Ubuntu" or ansible_os_family == "Debian"
+
+      - name: start and enable httpd in Alma
+        service:
+          name: httpd
+          state: started
+          enabled: yes
+        when: 
+          - ansible_distribution == "AlmaLinux"
+          - ansible_distribution_version == "9.0"
+
+      - name: start and enable apache2 in Ubuntu
+        service:
+          name: apache2
+          state: started
+          enabled: yes
+        when: 
+          - ansible_distribution == "Ubuntu" or ansible_os_family == "Debian"
+...

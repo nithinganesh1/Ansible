@@ -1,0 +1,24 @@
+---
+  - name: Check and install ntp or chrony based on OS
+    hosts: me
+    tasks:
+      - name: Install the appropriate NTP package based on distribution
+        package:
+          update_cache: true
+          name: "{{ item.name }}"
+          state: present
+        loop:
+          - { name: ntp, distro: 'Ubuntu' }
+          - { name: chrony, distro: 'AlmaLinux' }
+        when: ansible_distribution == item.distro
+
+      - name: start and enable ntp in Ubuntu
+        service:
+          name: "{{item.name}}"
+          state: started
+          enabled: yes
+        loop:
+          - { name: ntp, distro: 'Ubuntu' }
+          - { name: chronyd, distro: 'AlmaLinux' }
+        when: ansible_distribution == item.distro
+...

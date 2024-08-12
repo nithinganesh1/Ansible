@@ -1,9 +1,12 @@
+---
   - name: User Management
     hosts: me
+    vars_files:
+      - ~/Ansible/vars/user_vars.yml
     tasks:
       - name: create user named devops
         user:
-          name: devops
-          shell: /bin/bash
+          name: "{{user}}"
+          shell: "{{shell}}"
           comment: "Hello User"
           groups: 10

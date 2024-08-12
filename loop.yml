@@ -1,0 +1,15 @@
+---
+  - name: install multiple pakages
+    hosts: me
+    tasks:
+      - name: install chrony, zip, git, vim, tree
+        package:
+          name: "{{item}}"
+          state: present
+        loop:
+          - chrony
+          - zip
+          - git
+          - vim
+          - tree
+...

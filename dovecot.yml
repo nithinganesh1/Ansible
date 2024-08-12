@@ -1,0 +1,25 @@
+---
+  - name: install apache in different distros
+    hosts: me
+    tasks:
+      - name: install dovicot in alma
+        dnf:
+          name: dovecot
+          state: present
+        when: 
+          - ansible_distribution == "AlmaLinux"
+          - ansible_distribution_version == "9.0"
+
+      - name: install dovicot-core in Ubuntu
+        apt:
+          name: dovecot-core
+          state: present
+        when: 
+          - ansible_distribution == "Ubuntu" or ansible_os_family == "Debian"
+
+      - name: start and enable in all distros
+        service:
+          name: dovecot
+          state: started
+          enabled: yes
+...

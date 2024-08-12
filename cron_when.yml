@@ -1,0 +1,36 @@
+---
+  - name: install apache in different distros
+    hosts: me
+    tasks:
+      - name: install cronie in alma
+        dnf:
+          name: cronie
+          state: present
+        when: 
+          - ansible_distribution == "AlmaLinux"
+          - ansible_distribution_version == "9.0"
+
+      - name: install cron in Ubuntu
+        apt:
+          name: cron
+          state: present
+        when: 
+          - ansible_distribution == "Ubuntu" or ansible_os_family == "Debian"
+
+      - name: start and enable crond in Alma
+        service:
+          name: crond
+          state: started
+          enabled: yes
+        when: 
+          - ansible_distribution == "AlmaLinux"
+          - ansible_distribution_version == "9.0"
+
+      - name: start and enable cron in Ubuntu
+        service:
+          name: cron
+          state: started
+          enabled: yes
+        when: 
+          - ansible_distribution == "Ubuntu" or ansible_os_family == "Debian"
+...
