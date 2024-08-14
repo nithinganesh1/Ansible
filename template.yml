@@ -1,0 +1,9 @@
+---
+  - name: copy to nithin
+    hosts: nithin
+    tasks:
+      - name: copy using template
+        template:
+          src: templates/temp.j2
+          dest: /home/ng/usercr.yml
+...

@@ -1,6 +1,6 @@
 ---
   - name: web hosting using nginx
-    hosts: nithin
+    hosts: nithin2
     tasks:
       - name: install nginx
         dnf:
@@ -30,10 +30,11 @@
           dest: /usr/share/nginx/html/index.html
 
       - name: update server block
-        template:
+        template: copy conf file
           src: /home/ng/Ansible/templates/server_block.j2
           dest: /etc/nginx/conf.d/site1.conf
         notify: restart
+
     handlers:
       - name: restart
         service:

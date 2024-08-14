@@ -1,0 +1,11 @@
+---
+  - name: dir_creation_/tmp/testdir
+    hosts: me
+      #vars:
+      #path: /tmp/testvar3
+    tasks:
+      - name: creation
+        file:
+          path: "{{path}}"
+          state: directory
+...

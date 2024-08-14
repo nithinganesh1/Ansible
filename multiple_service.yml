@@ -11,6 +11,11 @@
           - { name: ntp, distro: 'Ubuntu' }
           - { name: chrony, distro: 'AlmaLinux' }
         when: ansible_distribution == item.distro
+        tags:
+          - install
+          - ntp
+          - chrony
+
 
       - name: start and enable ntp in Ubuntu
         service:
@@ -21,4 +26,8 @@
           - { name: ntp, distro: 'Ubuntu' }
           - { name: chronyd, distro: 'AlmaLinux' }
         when: ansible_distribution == item.distro
+        tags:
+          - update
+          - ntp
+          - chrony
 ...
