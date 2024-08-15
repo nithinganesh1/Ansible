@@ -3,8 +3,8 @@ usr: player2
 cmt: "whelcome player2"
 bash: /bin/bash
 zh: /bin/zsh
-root: /var/www/html/site1;
-error: /var/log/nginx/error.log;
-access: /var/log/nginx/access.log;
+root: /var/www/html/oxer/oxer-html
+error: /var/log/nginx/error.log
+access: /var/log/nginx/access.log
 ind: index.html
 ...

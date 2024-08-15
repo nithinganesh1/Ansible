@@ -4,8 +4,6 @@ cmt: "welcome player1"
 bash: /bin/bash
 zh: /bin/zsh
 timeout: 30
-root: /var/www/html/site1
-error: /var/log/nginx/error.log
-access: /var/log/nginx/access.log
-ind: index.html
+DRoot: /var/www/html/car
+DInd: index.html
 ...

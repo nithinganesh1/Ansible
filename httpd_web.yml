@@ -1,15 +1,15 @@
 ---
-  - name: web hosting using nginx
-    hosts: nithin2
+  - name: web hosting using httpd
+    hosts: nithin
     tasks:
-      - name: install nginx
+      - name: install httpd
         dnf:
-          name: nginx
+          name: httpd
           state: present
 
       - name: enable and start
         service:
-          name: nginx
+          name: httpd
           state: started
           enabled: yes
 
@@ -22,26 +22,29 @@
 
       - name: copy file to target
         copy:
-          src: /home/ng/Ansible/Nithin/oxer-html
-          dest: /var/www/html/oxer
-          owner: nginx
-          group: nginx
+          src: /home/ng/Ansible/Nithin/car
+          dest: /var/www/html/
+          owner: apache
+          group: apache
 
-      - name: update server block
+      - name: update VirtualHost
         template:
-          src: /home/ng/Ansible/templates/server_block.j2
-          dest: /etc/nginx/conf.d/site1.conf
-        notify: restart
+          src: /home/ng/Ansible/templates/VirtualHost.j2
+          dest: /etc/httpd/conf.d/oxer.conf
+        notify: fire
+
+      - name: meta
+        meta: flush_handlers
 
     handlers:
       - name: restart
         service:
-          name: nginx
+          name: httpd
           state: restarted
+        listen: fire
 
       - name: restarting firewalld
         service:
           name: firewalld
           state: restarted
-    
 ...
