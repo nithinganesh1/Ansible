@@ -1,0 +1,31 @@
+# tasks file for WebHosting_Roles
+- name: install httpd
+  dnf:
+    name: httpd
+    state: present
+
+- name: enable and start
+  import_tasks: es.yml
+
+- name: adding portnum to firewalld
+  firewalld:
+    service: http
+    state: enabled
+    permanent: true
+  notify: restarting firewalld
+
+- name: copy file to target
+  copy:
+    src: dobbi
+    dest: "{{cdest}}"
+    owner: apache
+    group: apache
+
+- name: update VirtualHost
+  template:
+    src: VirtualHost.j2
+    dest: "{{tdest}}"
+  notify: fire
+
+- name: meta
+  meta: flush_handlers

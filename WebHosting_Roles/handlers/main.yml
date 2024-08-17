@@ -1,0 +1,13 @@
+---
+# handlers file for WebHosting_Roles
+- name: restart
+  service:
+    name: httpd
+    state: restarted
+  listen: fire
+
+- name: restarting firewalld
+  service:
+    name: firewalld
+    state: restarted
+...

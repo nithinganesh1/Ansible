@@ -1,0 +1,6 @@
+---
+  - name: webhsoting using 
+    hosts: nithin
+    roles:
+      - WebHosting_Roles
+...

@@ -1,0 +1,6 @@
+---
+# vars file for WebHosting_Roles
+cdest: /var/www/html/
+tdest: /etc/httpd/conf.d/dobbi.conf
+DRoot: /var/www/html/dobbi
+DInd: index.html

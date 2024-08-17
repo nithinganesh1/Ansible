@@ -1,0 +1,4 @@
+- hosts: nithin
+  remote_user: ng
+  roles:
+    - WebHosting_Roles
